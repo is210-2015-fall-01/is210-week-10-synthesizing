@@ -10,9 +10,13 @@ def sum_orders(customers, orders):
         Customer(dict)
         orders(dict)
     Returns:
-        >>> Orders
+        Returns the combined dictionary.
+    Examples:
+            ORDERS = {1: {'customer_id': 2, 'total': 10},
+            3: {'customer_id': 2, 'total': 10},
+            4: {'customer_id': 3, 'total': 15}}
     """
-    customers_new = customers.copy()
+    customers_new = {}
     for _, order in orders.items():
         cid = order['customer_id']
         if cid in customers_new:
@@ -24,15 +28,19 @@ def sum_orders(customers, orders):
                 customers_new[cid]['total'] += order['total']
         else:
             customers_new[cid] = {}
+            customers_new[cid]['email'] = customers[cid]['email']
+            customers_new[cid]['name'] = customers[cid]['name']
             customers_new[cid]['orders'] = 1
             customers_new[cid]['total'] = order['total']
     return customers_new
 
 if __name__ == "__main__":
-    ORDERS = {1: {'customer_id': 2, 'total': 10},
-              3: {'customer_id': 2, 'total': 10},
-              4: {'customer_id': 3, 'total': 15}}
-    CUSTOMERS = {2: {'name': 'Person One', 'email': 'email@one.com'},
-                 3: {'name': 'Person Two', 'email': 'email@two.com'}}
-    ORDER_SUM = sum_orders(customers=CUSTOMERS, orders=ORDERS)
-    print ORDER_SUM
+    #ORDERS = {1: {'customer_id': 2, 'total': 10},
+              #3: {'customer_id': 2, 'total': 10},
+              #4: {'customer_id': 3, 'total': 15}}
+    #CUSTOMERS = {2: {'name': 'Person One', 'email': 'email@one.com'},
+                 #3: {'name': 'Person Two', 'email': 'email@two.com'}}
+    import data
+    import pprint
+    order_sum = sum_orders(customers=data.CUSTOMERS, orders=data.ORDERS)
+    pprint.pprint(order_sum)
