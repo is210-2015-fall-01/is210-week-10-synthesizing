@@ -35,12 +35,6 @@ def sum_orders(customers, orders):
     return customers_new
 
 if __name__ == "__main__":
-    #ORDERS = {1: {'customer_id': 2, 'total': 10},
-              #3: {'customer_id': 2, 'total': 10},
-              #4: {'customer_id': 3, 'total': 15}}
-    #CUSTOMERS = {2: {'name': 'Person One', 'email': 'email@one.com'},
-                 #3: {'name': 'Person Two', 'email': 'email@two.com'}}
     import data
     import pprint
-    order_sum = sum_orders(customers=data.CUSTOMERS, orders=data.ORDERS)
-    pprint.pprint(order_sum)
+    pprint.pprint(sum_orders(customers=data.CUSTOMERS, orders=data.ORDERS))
