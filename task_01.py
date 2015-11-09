@@ -12,7 +12,6 @@ def sum_orders(customers, orders):
 
     Returns:
         (dict): the combined dictionary of customers and orders.
-         
     Examples:
         >>> ORDERS = {1: {'customer_id': 2, 'total': 10},
               3: {'customer_id': 2, 'total': 10},
@@ -31,10 +30,10 @@ def sum_orders(customers, orders):
     """
     customer_list = {}
     for key, value in customers.iteritems():
-       total_orders = 0
-       number_orders = 0
-       for request in orders.values():
-          if key == request['customer_id']:
+        total_orders = 0
+        number_orders = 0
+        for request in orders.values():
+            if key == request['customer_id']:
                 total_orders += request['total']
                 number_orders += 1
                 customer_list[key] = {'name': value['name'],
@@ -42,5 +41,3 @@ def sum_orders(customers, orders):
                                       'orders': number_orders,
                                       'total': total_orders}
     return customer_list
-
-    
